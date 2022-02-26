@@ -1,0 +1,98 @@
+.frm {
+  &__lyt {
+    width: 36rem;
+    margin: 1rem 2rem;
+    background-color: aliceblue;
+    border-radius: 6px;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 3px 0px 11px rgb(192, 192, 192);
+    gap: 10px;
+  }
+  &__lyt-control {
+    &:not(:last-child) {
+      border: 1px solid #333;
+      border-radius: 5px;
+
+      & > i {
+        padding: 0 0.5rem;
+        font-size: 1.4rem;
+      }
+
+      & > input[type="text"],
+      & > input[type="password"],
+      & > input[type="email"] {
+        border: none;
+        width: 90%;
+        height: 3rem;
+        border-radius: 5px;
+        padding: 0.2rem 0.5rem;
+      }
+
+      & > input[type="text"]:focus,
+      & > input[type="password"]:focus,
+      & > input[type="email"]:focus {
+        border: none;
+        outline: none;
+      }
+    }
+    &:last-child {
+      //background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 1rem 0;
+    }
+  }
+  &__lyt-heading {
+    &--text {
+      font-size: 2.5rem;
+      word-wrap: break-word;
+      display: flex;
+      flex-direction: column;
+      &---main {
+        font-weight: 400;
+        font-size: 4rem;
+        & > span {
+          text-align: end;
+          width: fit-content;
+          height: fit-content;
+          font-size: 5rem;
+          color: rgb(8, 182, 8);
+        }
+      }
+
+      &---sub {
+        font-size: 2.2rem;
+        color: #777;
+      }
+    }
+  }
+  &__lyt-main {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    // background-color: yellow;
+  }
+}
+
+@media all and (max-width: 320px) {
+  .frm {
+    &__lyt {
+      width: 28rem;
+      flex-direction: column;
+    }
+    // &__lyt-control {
+    // }
+    &__lyt-heading {
+      &--text {
+        font-size: 2.5rem;
+        word-wrap: break-word;
+      }
+    }
+    // &__lyt-main {
+    // }
+  }
+}

@@ -1,0 +1,49 @@
+<div class="frm__lyt">
+  <div class="frm__lyt-heading">
+    <div class="frm__lyt-heading--text">
+      <h1 class="frm__lyt-heading--text---main">
+        Sign in<span>&period;</span>
+      </h1>
+      <p class="frm__lyt-heading--text---sub">to access contents</p>
+    </div>
+  </div>
+  <form
+    action=""
+    class="frm__lyt-main"
+    [formGroup]="fg"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="frm__lyt-control">
+      <i class="fa-solid fa-envelope"></i>
+      <input
+        type="text"
+        formControlName="username"
+        placeholder="Your Username"
+        class="message__tooltip"
+        data-tooltip="Enter your username or Email address."
+      />
+    </div>
+    <invalid-message
+      *ngIf="fg.controls.username.touched && fg.controls.username.invalid"
+      [message]="'Enter your username or Email address.'"
+    ></invalid-message>
+    <div class="frm__lyt-control">
+      <i class="fa-solid fa-key"></i>
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="Your Password"
+      />
+    </div>
+    <invalid-message
+      *ngIf="fg.controls.password.touched && fg.controls.password.invalid"
+      [message]="'Enter your password.'"
+    ></invalid-message>
+    <div class="frm__lyt-control">
+      <button type="submit" class="button good" [disabled]="fg.invalid">Sign in</button>
+      <button class="button__link link__primary" type="button" role="link">
+        Got no account? Sign up
+      </button>
+    </div>
+  </form>
+</div>

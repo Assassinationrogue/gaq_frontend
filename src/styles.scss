@@ -1,1 +1,181 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+//1 em = 16px  (better for media queries, works for all browser)
+$watchWidth: 200px;
+$mobileWidth: 37.5em; // 600px
+$mobileLandscape: 800px;
+
+$tabletWidth: 56.25em; // 900px
+$desktopWidth: 75em; //1200px
+$desktopWidthX: 1400px;
+$desktopWidthXL: 1600px;
+$desktopWidthXXL: 112.5em; // 1800px
+$desktopWidthXXXL: 2000px;
+
+// color variable
+
+$heighlights: #caebf2;
+$bigText: #a9a9a9;
+$icons: #ff3b3f;
+$backgroundColor: #efefef;
+$buttonColorGreen: #4CBB17;
+
+// mixins
+
+@mixin disabledButton($color){
+  color: $color
+}
+
+@mixin media-query-breakpoint($breakpoint) {
+  @if $breakpoint == phone {
+    @media all and (max-width: $mobileWidth) {
+      @content;
+    }
+  }
+  @if $breakpoint == tablet {
+    @media all and (max-width: $tabletWidth) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @media all and (max-width: $desktopWidth) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktopWidthXXXL {
+    @media all and (min-width: $desktopWidth) {
+      @content;
+    }
+  }
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  // defines 1 rem
+  font-size: 62.5%;
+  @include media-query-breakpoint(phone) {
+    font-size: 50%;
+  }
+
+  @include media-query-breakpoint(tablet_portrait) {
+    font-size: 50%;
+  }
+
+  @include media-query-breakpoint(desktop) {
+    font-size: 60%;
+  }
+}
+
+body {
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgb(46, 45, 45);
+  box-sizing: border-box;
+  background-color: $backgroundColor;
+  overflow-x: hidden;
+  font-family: "Open Sans", sans-serif;
+}
+
+.button {
+  border: none;
+  width: fit-content;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin: 15px 1px;
+}
+
+.primary {
+  background-color: rgb(86, 163, 250);
+  color: aliceblue;
+
+  &:hover {
+    cursor: pointer;
+    background-color: lighten(rgb(86, 163, 250), 5%);
+  }
+
+  &:active {
+    background-color: darken(rgb(86, 163, 250), 5%);
+  }
+}
+
+.good {
+  background-color: $buttonColorGreen;
+  color: white;
+
+  &:hover {
+    cursor: pointer;
+    background-color: lighten($buttonColorGreen, 5%);
+  }
+  &:active {
+    background-color: darken($buttonColorGreen, 5%);
+  }
+}
+
+button[disabled] {
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
+.bad {
+  background-color: rgb(243, 60, 60);
+  color: white;
+
+  &:hover {
+    cursor: pointer;
+    background-color: lighten(rgb(243, 60, 60), 5%);
+  }
+
+  &:active {
+    background-color: darken(rgb(243, 60, 60), 5%);
+  }
+}
+
+.button__link {
+  border: none;
+}
+
+button[role="link"] {
+  background-color: aliceblue;
+}
+.link__primary {
+  color: rgb(86, 163, 250);
+  transition: transform .2s ease-in;
+
+  &:hover {
+    cursor: pointer;
+    color: darken(rgb(86, 163, 250), 15%);
+    transform: translateY(-.1rem);
+    text-shadow: 2px 0px 4px rgb(190, 189, 189);
+  }
+
+  &:active {
+    color: darken(rgb(86, 163, 250), 25%);
+    transform: translateY(0rem);
+  }
+}
+
+
+.message__tooltip{
+  &::before, &::after{
+    content: '';
+    position: absolute;
+    z-index: 99999;
+    top: -.25rem;
+    left: 50%;
+    height: 25px;
+    width: 25px;
+    background-color: black;
+   // display: inline-block;
+    transform: translateX(-50%) translateY(-100%);
+  }
+}
