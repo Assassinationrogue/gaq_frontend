@@ -1,7 +1,12 @@
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { MessageModule } from './../../shared/message/message.module';
+import { CommonModule } from '@angular/common';
+import { UserService } from './../services/user.service';
+import { AbstractControl, ValidatorFn, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Controls, Fields } from './../modal/public';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, NgModule, OnInit, Output } from '@angular/core';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+
 
 /**
  * Checks minimum number of characters in the password
@@ -92,6 +97,7 @@ function shouldContainSpecialCharacter(): ValidatorFn {
 })
 export class SignupFormComponent implements OnInit {
   fg: FormGroup;
+  @Output() loadSignIn = new EventEmitter<boolean>();
   fields: Fields = {
     username: {
       label: 'Username',
@@ -118,7 +124,7 @@ export class SignupFormComponent implements OnInit {
       required: true,
     },
   };
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private userService: UserService,private router: Router) {}
 
   ngOnInit(): void {
     this.fg = this.createForm();
@@ -161,5 +167,21 @@ export class SignupFormComponent implements OnInit {
   onSubmit(): void {
     this.fg.markAllAsTouched();
     console.log(this.fg.getRawValue());
+    this.userService.postUser(this.fg.getRawValue()).subscribe(data=>{
+      if(data['statusCode'] === 200){
+        this.router.navigate(['user'])
+      }
+    })
+  }
+
+  goToSignIn(){
+    this.loadSignIn.emit(true);
   }
 }
+
+
+@NgModule({
+  declarations: [SignupFormComponent],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, MessageModule],
+})
+class SingUpFormModule {}

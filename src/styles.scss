@@ -21,6 +21,8 @@ $bigText: #a9a9a9;
 $icons: #ff3b3f;
 $backgroundColor: #efefef;
 $buttonColorGreen: #4CBB17;
+$disabledButton: rgb(122, 122, 122);
+$disabledButtonText: darken($disabledButton, 5);
 
 // mixins
 
@@ -121,9 +123,15 @@ body {
 }
 
 button[disabled] {
+  background-color: $disabledButton;
+  color: rgb(209, 204, 204);
+  text-shadow: 1px 1px 1px #fff inset;
   &:hover {
     cursor: not-allowed;
+      background-color: $disabledButton;
+     color: rgb(209, 204, 204);
   }
+  
 }
 
 .bad {

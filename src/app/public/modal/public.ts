@@ -30,3 +30,10 @@ export interface Controls {
     ]
   ];
 }
+export interface User {
+  id?: string | number;
+  userName: string;
+  password: string;
+  lastLogin?: string;
+  statusCode?: number;
+}

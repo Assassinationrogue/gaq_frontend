@@ -7,6 +7,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./public/public.module').then((m) => {
         return m.PublicModule;
+      })
+  },
+  {
+    path: 'user',
+    loadChildren: () =>
+      import('./private/private/private.module').then((m) => {
+        return m.PrivateModule;
       }),
   },
 ];
