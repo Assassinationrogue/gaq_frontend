@@ -3,13 +3,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PrivateComponent } from './private.component';
 import { PostComponent } from '../post/post.component';
+import { CommentComponent } from '../comment/comment.component';
 
 
 
 @NgModule({
   declarations: [
     PrivateComponent,
-    PostComponent
+    PostComponent,
+    CommentComponent
   ],
   imports: [
     CommonModule,
