@@ -10,7 +10,7 @@
     <div class="lyt__details-editor">
       <div class="lyt__details-editor--menu---container">
         <div class="lyt__details-editor--menu---bar">
-          <button type="button">B</button>
+          <button type="button"  #bold (click)="setEditorTextBold(bold)" title="Bold">B</button>
           <button type="button">&#1030;</button>
           <button type="button"><i class="fa-solid fa-link"></i></button>
           <button type="button"><i class="fa-solid fa-image"></i></button>
@@ -18,9 +18,16 @@
         </div>
       </div>
       <div class="lyt__details-editor--box">
-        <div class="rt-editor" contenteditable="true" spellcheck="false" placeholder="Write the details here"></div>
+        <div class="rt-editor" #editorBox contenteditable="true" spellcheck="false" placeholder="Write the details here">
+          <p>
+            <br>
+            
+          </p>
+        </div>
       </div>
     </div>
+    
+     <button type="submit" class="button good">Publish</button>
   </div>
-  <button type="submit" class="button good">Publish</button>
+ 
 </div>
